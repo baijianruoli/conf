@@ -1,5 +1,5 @@
 syntax="proto3";
-package grpc;
+package confact;
 option go_package="confact/proto";
 
 message RequestVoteArgs {
@@ -34,7 +34,12 @@ message AppendEntriesReply {
 message LogEntry {
   int64 Term=1;
   int64 Index=2;
-  bytes Command=3;
+  Entry Command=3;
+}
+
+message Entry{
+  string Key=1;
+  bytes  Value=2;
 }
 
 service Raft {
